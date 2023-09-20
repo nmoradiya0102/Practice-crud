@@ -22,6 +22,14 @@ const vehicle_Schema = new mongoose.Schema(
             type : String,
             trim : true
         },
+        Bike: {
+            type: mongoose.Types.ObjectId,
+            ref: "Bike",
+        },
+        Car: {
+            type: mongoose.Types.ObjectId,
+            ref: "Car",
+        },
         is_active : {
             type : Boolean,
             default : true
@@ -29,7 +37,14 @@ const vehicle_Schema = new mongoose.Schema(
     },
     {
         timestamps : true,
-        versionKey : false
+        versionKey : false,
+        toJSON: {
+            transform: function (doc, data) {
+              if (data?.vehicle_image) {
+                data.vehicle_image = `${config.base_url}vehicle_image/${data.vehicle_image}`;
+              }
+            },
+          },
     }
 )
 
