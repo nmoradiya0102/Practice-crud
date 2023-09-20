@@ -3,3 +3,4 @@ module.exports.car = require("./car.model");
 module.exports.socialmedia = require("./social.media.model");
 module.exports.event = require("./event.model");
 module.exports.vehicle = require("./vehicle.model");
+module.exports.job = require("./job.model");
